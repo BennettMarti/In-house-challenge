@@ -1,0 +1,11 @@
+#include <PRIZM.h>
+PRIZM oto;
+
+
+void setup() {
+    oto.PrizmBegin();
+    oto.setMotorPower(1,100);
+    delay(5000);
+
+}
+
