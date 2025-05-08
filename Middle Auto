@@ -1,0 +1,25 @@
+#include <PRIZM.h>
+PRIZM oto;
+
+//arm is motor 1
+//drive should be motor twqo
+void setup() {
+  oto.PrizmBegin();
+  oto.setMotorPower(2,-45); //drive to the middle 
+  delay(1500);              //time to drive to the middle
+  oto.setMotorPower(2,0);   //stop driving
+
+  oto.setMotorPower(1,80);  //move arm down
+  delay(2000);              //time to move arm down
+
+  oto.setMotorPower(2,30);  //drive in reverse speed
+  delay(300);               //time to drive reverse
+  
+  oto.setMotorPower(1,-80); //
+  delay(2300);
+  
+  oto.PrizmEnd();
+
+}
+
+
