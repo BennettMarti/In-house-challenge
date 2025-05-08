@@ -1,0 +1,43 @@
+#include <PRIZM.h?>
+PRIZM oto;
+int i = 0;
+void setup() {
+  move();
+  delay(5000);
+  score();
+  delay(5000);
+  release();
+  delay(5000);
+}
+void move() {
+  oto.PrizmBegin();
+  oto.setMotorInvert(1,1);
+  while(oto.readLineSensor(2) == 0){
+    oto.setMotorPowers(40,40);//Sets the motors to turn at 40% power until it sees a line
+    i++;
+  }
+  while{
+    oto.setMotorPowers(30,125); //rotate the robot around to face the wall
+    delay(2000); //enough time to rotate the bot around
+    oto.setMotorPowers(125,125); //stop the rotation
+  }
+}
+  void score() { 
+  oto.setMotorPower(1,100); //drive arm motor positive makes it go down, negative makes it go up
+  delay(2000); //hopefully enough time to score
+  oto.setMotorPower(1,-100); //drive motor oppisite way
+  delay(1000); //remove arm from wall
+  }
+  void release() {
+    oto.setMotorPowers(30,125); //rotate the robot to move back to facing the starting line
+    delay(2000); //enough time to rotate the bot around
+    oto.setMotorPowers(125,125); //stop the rotation
+    for(i > 0; i--;){
+      oto.setMotorPowers(40,40);
+    }
+    if(i == 0){
+      oto.setMotorPowers(60,125);
+      delay(2000);
+    }
+
+  }
